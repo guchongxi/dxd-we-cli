@@ -1,0 +1,34 @@
+{
+  "name": "dxd-we-cli",
+  "version": "1.0.0",
+  "description": "丁香医生前端微信小程序开发脚手架",
+  "bin": {
+    "dxd-we": "bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guchongxi/dxd-we-cli"
+  },
+  "keywords": [
+    "dxd",
+    "cli",
+    "weapp"
+  ],
+  "author": "gucx@dxy.cn",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.18.0",
+    "fs-extra": "^7.0.0",
+    "inquirer": "^6.2.0",
+    "json5": "^2.0.1",
+    "minimatch": "^3.0.4",
+    "shelljs": "^0.8.2",
+    "update-notifier": "^2.5.0",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^4.19.1"
+  }
+}
