@@ -1,7 +1,10 @@
+/**
+ * 辅助函数 - 具有业务意义
+ */
 const program = require('commander');
 const execa = require('execa');
-const readline = require('readline');
-const { red, supportsColor } = require('chalk');
+const { red } = require('chalk');
+const { renderProgressBar } = require('./utils');
 
 /**
  *  增强 commander 错误提示
@@ -19,26 +22,6 @@ exports.enhanceErrorMessages = (methodName, log) => {
     process.exit(1);
   };
 };
-
-function toStartOfLine(stream) {
-  if (!supportsColor) {
-    stream.write('\r');
-    return;
-  }
-  readline.cursorTo(stream, 0);
-}
-
-function renderProgressBar(curr, total) {
-  const ratio = Math.min(Math.max(curr / total, 0), 1);
-  const bar = ` ${curr}/${total}`;
-  const availableSpace = Math.max(0, process.stderr.columns - bar.length - 3);
-  const width = Math.min(total, availableSpace);
-  const completeLength = Math.round(width * ratio);
-  const complete = '#'.repeat(completeLength);
-  const incomplete = '-'.repeat(width - completeLength);
-  toStartOfLine(process.stderr);
-  process.stderr.write(`[${complete}${incomplete}]${bar}`);
-}
 
 /**
  * 执行命令

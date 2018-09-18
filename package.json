@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "丁香医生前端微信小程序开发脚手架",
   "bin": {
-    "dxd-we": "bin/index.js"
+    "dxd-we": "bin/index"
   },
   "repository": {
     "type": "git",

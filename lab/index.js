@@ -4,8 +4,8 @@ const program = require('commander');
 const updateNotifier = require('update-notifier');
 const { yellow } = require('chalk');
 const pkg = require('../package.json');
-const { PKG_DESCRIPTION } = require('../lib/constant');
-const { enhanceErrorMessages } = require('../lib/helper');
+const { PKG_DESCRIPTION } = require('./constant');
+const { enhanceErrorMessages } = require('./helper');
 
 // 版本更新提示
 // 默认一天提醒一次
@@ -25,10 +25,20 @@ program
 program
   .command('create <app-name>')
   .alias('c')
-  .description('create a new project powered by dxd-we')
+  .description('Create a new project powered by dxd-we')
   .option('-f, --force', 'Overwrite target directory if it exists')
   .action((appName, options) => {
-    require('../lib/create')(appName, options);
+    require('./create')(appName, options);
+  });
+
+program
+  .command('generate <type> <name>')
+  .alias('g')
+  .description('Generate components and pages.')
+  .option('--work-dir [dir]', '工作目录，默认为当前目录')
+  .option('--src-dir [dir]', '源码目录，默认为工作目录下的src文件夹')
+  .action((type, name, options) => {
+    require('./generate')(type, name, options);
   });
 
 enhanceErrorMessages('missingArgument', argName => {
