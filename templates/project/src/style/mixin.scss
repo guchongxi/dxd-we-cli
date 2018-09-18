@@ -1,0 +1,98 @@
+@mixin arrow($dir: right) {
+  @include expand_click_area(20rpx);
+  &::after {
+    content: '';
+    display: inline-block;
+    font-size: 0;
+    height: 12rpx;
+    width: 12rpx;
+    border-width: 4rpx 4rpx 0 0;
+    border-color: #ccc;
+    border-style: solid;
+    position: relative; // 这个2px的解决方案及其粗糙，如果元素高度足够高的话，其位置是不可确定的。
+    bottom: 2px;
+  }
+  @if $dir=='right' {
+    &::after {
+      transform: rotate(45deg);
+    }
+  }
+  @if $dir=='down' {
+    &::after {
+      transform: rotate(135deg);
+    }
+  }
+  @if $dir=='up' {
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@mixin txt_overflow($line: 1, $line-height: 48rpx) {
+  @if $line==1 {
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: break-all;
+    text-overflow: ellipsis;
+  }
+  @else {
+    display: -webkit-box;
+    word-break: break-all;
+    overflow: hidden;
+    line-height: $line-height;
+    max-height: $line-height * $line;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+  }
+}
+
+@mixin border_unite($left: 0%) {
+  // 直接写calc(100% - $left)无法编译
+  $width: 100% - $left;
+  & {
+    position: relative;
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    bottom: 1rpx;
+    width: $width;
+    left: $left;
+    height: 1rpx;
+    background-color: $grey-8;
+  }
+}
+
+@mixin border($dir: 'all', $color: #ebebeb, $radius: 0) {
+  border-radius: $radius;
+  @if $dir=='bottom' {
+    border-bottom: 1rpx solid $color;
+  }
+  @if $dir=='top' {
+    border-top: 1rpx solid $color;
+  }
+  @if $dir=='right' {
+    border-right: 1rpx solid $color;
+  }
+  @if $dir=='left' {
+    border-left: 1rpx solid $color;
+  }
+  @if $dir=='all' {
+    border: 1rpx solid $color;
+  }
+}
+
+@mixin expand_click_area($size: 10rpx) {
+  padding: $size;
+  margin: -$size;
+}
+
+// 用于将一张图作为背景图覆盖在一个view上，具体使用background-image还是background-color需要自己定义
+@mixin img_cover_bg($width: 28rpx, $height: $width, $radius: 0%) {
+  width: $width;
+  height: $height;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: $radius;
+}
