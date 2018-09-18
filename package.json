@@ -1,6 +1,6 @@
 {
   "name": "dxd-we-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "丁香医生前端微信小程序开发脚手架",
   "bin": {
     "dxd-we": "bin/index"
