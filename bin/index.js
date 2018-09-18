@@ -5,7 +5,7 @@ const updateNotifier = require('update-notifier');
 const { yellow } = require('chalk');
 const pkg = require('../package.json');
 const { PKG_DESCRIPTION } = require('../lib/constant');
-const { enhanceErrorMessages } = require('../lib/utils');
+const { enhanceErrorMessages } = require('../lib/helper');
 
 // 版本更新提示
 // 默认一天提醒一次
