@@ -1,16 +1,15 @@
 {
-  "name": "dxd-we-cli",
+  "name": "g-we-cli",
   "version": "1.0.2",
   "description": "丁香医生前端微信小程序开发脚手架",
   "bin": {
-    "dxd-we": "bin/index"
+    "g-we": "bin/index"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guchongxi/dxd-we-cli"
+    "url": "git+https://github.com/guchongxi/g-we-cli"
   },
   "keywords": [
-    "dxd",
     "cli",
     "weapp"
   ],
